@@ -1,4 +1,5 @@
-const Pool = require('pg').Pool;
+const Pool = require('pg').Pool
+require('dotenv').config()
 
 const pool = new Pool({
   user: 'postgres',
@@ -6,6 +7,6 @@ const pool = new Pool({
   host: 'localhost',
   port: 5432,
   database: 'diaries'
-});
+})
 
-module.exports = pool;
+module.exports = pool
