@@ -6,10 +6,9 @@ router.route('/:username')
 .get(async (req,res) => {
   try {
     const allDiary = await pool.query(`SELECT * FROM ${req.params.username}_diary`);
-    res.json(allDiary.rows)
-
+    res.status(201).json(allDiary.rows)
   } catch (error) {
-    console.log(error)
+    res.status(500).send(error)
   }
 })
 .put((req,res) => {
