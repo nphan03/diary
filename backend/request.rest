@@ -6,6 +6,32 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
+  "username": "alice",
+  "password": "nphan03"
+}
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
   "username": "ken",
-  "password": "password"
+  "password": "0987654321"
+}
+
+###
+POST http://localhost:3000/signup
+Content-Type: application/json
+
+{
+  "username": "ken",
+  "password": "0987654321"
+}
+
+###
+POST http://localhost:3000/signup
+Content-Type: application/json
+
+{
+  "username": "alice",
+  "password": "nphan03"
 }
