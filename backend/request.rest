@@ -23,8 +23,8 @@ POST http://localhost:3000/signup
 Content-Type: application/json
 
 {
-  "username": "ken",
-  "password": "0987654321"
+  "username": "leila",
+  "password": "leila123"
 }
 
 ###
@@ -34,4 +34,17 @@ Content-Type: application/json
 {
   "username": "alice",
   "password": "nphan03"
+}
+
+###
+POST http://localhost:3000/alice
+Content-Type: application/json
+
+{
+  "diary": {
+    "day": "25",
+    "month": "June",
+    "year": "2022",
+    "text": "listening to music"
+  }
 }
