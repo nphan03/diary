@@ -1,4 +1,4 @@
-GET http://localhost:3000/ken
+GET http://localhost:3000/alice
 
 
 ###
@@ -42,9 +42,19 @@ Content-Type: application/json
 
 {
   "diary": {
-    "day": "25",
+    "day": "27",
     "month": "June",
     "year": "2022",
     "text": "listening to music"
   }
 }
+
+
+###
+DELETE http://localhost:3000/ken
+Content-Type: application/json
+
+{
+  "id": "4652f0d2-f8c1-44c9-8427-c4b476dc8a60"
+}
+
