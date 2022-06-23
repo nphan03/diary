@@ -8,8 +8,12 @@ app.use(express.urlencoded({ extended:true }))
 app.use(express.json())
 
 //users log in
-const usersRouter = require('./routes/users')
-app.use('/', usersRouter)
+const loginRouter = require('./routes/login')
+app.use('/', loginRouter)
+
+//users sign up
+const signupRouter = require('./routes/signup')
+app.use('/', signupRouter)
 
 //get all diaries
 const diariesRouter = require('./routes/diaries')
