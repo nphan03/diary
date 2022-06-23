@@ -8,7 +8,7 @@ const createNewUser = async (username, password) => {
     id SERIAL PRIMARY KEY,
     username VARCHAR(100) NOT NULL,
     password TEXT NOT NULL,
-    diary_list  JSON
+    diary_list  JSONB
     )
   `)
       
