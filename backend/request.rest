@@ -1,7 +1,7 @@
 GET http://localhost:3000/alice
 
 
-###
+###correct login
 POST http://localhost:3000/login
 Content-Type: application/json
 
@@ -9,15 +9,22 @@ Content-Type: application/json
   "username": "alice",
   "password": "nphan03"
 }
-###
+###login wrong pass 
 POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "username": "ken",
-  "password": "0987654321"
+  "username": "alice",
+  "password": "npha"
 }
+###login with usernot found
+POST http://localhost:3000/login
+Content-Type: application/json
 
+{
+  "username": "skjkalsjdlfa",
+  "password": "npha"
+}
 ###
 POST http://localhost:3000/signup
 Content-Type: application/json
@@ -41,20 +48,24 @@ POST http://localhost:3000/alice
 Content-Type: application/json
 
 {
-  "diary": {
-    "day": "27",
-    "month": "June",
-    "year": "2022",
-    "text": "listening to music"
-  }
+  "date": "2022-06-23",
+  "text": "listening to music"
 }
 
 
 ###
-DELETE http://localhost:3000/ken
+DELETE http://localhost:3000/alice
 Content-Type: application/json
 
 {
-  "id": "4652f0d2-f8c1-44c9-8427-c4b476dc8a60"
+  "id": "1"
 }
 
+###
+PUT http://localhost:3000/alice
+Content-Type: application/json
+
+{
+  "id": "2",
+  "newText": "Updated diary"
+}
