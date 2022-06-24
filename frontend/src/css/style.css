@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&display=swap');
+
+* {
+  margin: 0;
+  padding: 0; 
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+:root {
+  --color-bg: #fffcf7;
+  --color-card-bg: #e4f0d0;
+  --color-button-bg: #c2d8b9; 
+  --color-text: #38383a;
+  --color-white: #fff;
+
+  --transition: all 400ms ease;
+
+  --container-width-lg: 75%;
+  --container-width-md: 86%;
+  --container-width-sm: 90%;
+}
+
+body {
+  background: var(--color-bg);
+  font-family: 'Delius Swash Caps', cursive;
+  color: var(--color-text);
+  line-height: 1.7;
+  width: 100vw;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/********** GENERAL STYLE **************/
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+h3 {
+    font-size: 1.5rem;
+}
+
+a {
+    color: var(--color-text);
+    transition: var(--transition);
+}
