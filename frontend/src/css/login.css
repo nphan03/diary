@@ -45,4 +45,5 @@
 
 .login-message {
   height: 50px;
+  color: var(--color-danger)
 }

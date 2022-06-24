@@ -12,18 +12,20 @@ const App = () => {
   const [diaryList, setDiaryList] = useState()
   
   const logIn = () => {
+    setAuthMessage('')
     axios.post('http://localhost:3000/login', 
     {
       username: userName,
       password: passWord
     })
     .then(serverResponse => {
+      if (serverResponse.data === 'Authentication Fail') throw serverResponse.data 
       setDiaryList(serverResponse.data)
     })
     .catch(err => {
       setUserName('')
       setPassWord('')
-      setAuthMessage(err.data)
+      setAuthMessage(err)
     })
   }
 
