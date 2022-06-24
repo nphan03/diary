@@ -1,0 +1,44 @@
+.login {
+  max-width: 20rem;
+  height: fit-content;
+  
+  position: absolute; /*Can also be `fixed`*/
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  display: grid;
+  grid-template-rows: max-content max-content;
+  gap: 1rem;
+}
+
+.login-inputs {
+  background: var(--color-card-bg);
+
+  padding: 3rem var(--padding-size);
+  max-width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  border-radius: var(--border-radius);
+}
+
+.login-inputs__label {
+  display: block;
+  font-size: 18pt;
+}
+
+.login-inputs__input {
+  height: 40px;
+  font-size: 14pt;
+  padding: var(--padding-size);
+}
+
+.login-btn {
+  display: flex;
+  justify-content: space-between;
+}

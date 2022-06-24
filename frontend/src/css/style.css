@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&display=swap');
+@import 'login.css';
 
 * {
   margin: 0;
@@ -22,6 +23,9 @@
   --container-width-lg: 75%;
   --container-width-md: 86%;
   --container-width-sm: 90%;
+
+  --padding-size: 1rem;
+  --border-radius: 0.4rem;
 }
 
 body {
@@ -60,4 +64,24 @@ h3 {
 a {
     color: var(--color-text);
     transition: var(--transition);
+}
+
+.btn {
+  width: max-content;
+  display: inline-block;
+  padding: 0.75rem 1.2rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  background-color: var(--color-button-bg);
+  transition: var(--transition);
+  border: 1px solid transparent;
+
+  font-weight: bold;
+  font-family: inherit;
+  font-size: 15pt;
+}
+
+.btn:hover {
+  background: var(--color-white);
+  border: 1px solid var(--color-button-bg);
 }
