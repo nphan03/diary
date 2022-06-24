@@ -13,9 +13,9 @@ router.route('/login')
     if(await checkUserAuthenticate(req.body.username, req.body.password)) 
       res.redirect(`${process.env.URL}/${req.body.username}`)
     else 
-      res.send('Authentication Fail.')
+      res.status(500).send('Authentication Fail')
   }else{
-    res.send('Authentication Fail.')
+    res.status(500).send('Authentication Fail')
   }
   // if user does not exit create newuser(table) in database
   // redirect to http://localhost:3000/newUser
