@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&display=swap');
 @import 'login.css';
+@import 'taskbar.css';
 
 * {
   margin: 0;
@@ -75,7 +76,7 @@ a {
   cursor: pointer;
   background-color: var(--color-button-bg);
   transition: var(--transition);
-  border: 1px solid transparent;
+  border: 3px solid transparent;
 
   font-weight: bold;
   font-family: inherit;
@@ -84,5 +85,5 @@ a {
 
 .btn:hover {
   background: var(--color-white);
-  border: 1px solid var(--color-button-bg);
+  border: 3px solid var(--color-button-bg);
 }
