@@ -1,9 +1,10 @@
 import React , { useState  }  from 'react'
 import Login from './Login'
 import axios from 'axios'
-import Diaries from './Diaries'
+import Homepage from './Homepage'
 
 export const UserContext = React.createContext()
+export const DiaryContext = React.createContext()
 
 const App = () => {
   const [authMessage, setAuthMessage] = useState('')
@@ -30,14 +31,26 @@ const App = () => {
   }
 
   const userContextValue = {
+    userName,
     setUserName,
     setPassWord  
+  }
+
+  const diaryContextValue = {
+    diaryList
   }
   
   return (
     <UserContext.Provider value={userContextValue}>
-     {diaryList ? <Diaries diaryList={diaryList}/> : <Login logIn={logIn} authMessage={authMessage} />} 
-    </UserContext.Provider>
+    {
+      !diaryList ? 
+      <Login logIn={logIn} authMessage={authMessage} /> : 
+      <DiaryContext.Provider value={diaryContextValue}>
+        <Homepage />
+      </DiaryContext.Provider>
+    }
+    </UserContext.Provider >
+    
   )
 }
 
