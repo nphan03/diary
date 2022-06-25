@@ -74,6 +74,21 @@
   color: var(--color-text);
 }
 
+
+/* ========================== MEDIA QUERIES (MEDIUM DEVICES) ==================*/
+@media screen and (max-width: 992px) {
+  .diary-card {
+    width: 46%;
+  }
+}
+
+/* ========================== MEDIA QUERIES (SMALL DEVICES) ==================*/
+@media screen and (max-width: 576px) {
+  .diary-card {
+    width: 96%;
+  }
+}
+
 .clearfix:after { 
   content: "."; 
   visibility: hidden; 
