@@ -1,0 +1,25 @@
+.date-navigation {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+
+  background: var(--color-bg);
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  padding: 10px;
+  font-weight: bold;
+}
+
+
+.date-navigation__month, .date-navigation__year {
+  cursor: n-resize;
+}
+
+.date-navigation__month:hover, .date-navigation__year:hover {
+  transform: scale(1.2);
+  transition: var(--transition)
+}

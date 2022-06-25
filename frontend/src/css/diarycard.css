@@ -1,0 +1,83 @@
+.diary-card {
+  width: 21%;
+  height: 12rem;
+  margin: 2%;
+  float: left;
+
+  background: var(--color-card-bg);
+  border-radius: var(--border-radius);
+
+  display: grid;
+  grid-template-columns: auto min-content;
+  grid-template-rows: auto min-content;
+
+  grid-template-areas: 
+    "text text"
+    "date buttons";
+
+  padding: 5px;
+  cursor: pointer;
+}
+
+.diary-card__text {
+  grid-area: text;
+  padding-top: 5px;
+}
+
+.diary-card__text textarea {
+  resize: none;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.diary-card__date {
+  grid-area: date;
+  align-self: end;
+}
+
+.diary-card__btn {
+  grid-area: buttons;
+  flex-direction: column;
+  gap: 5px;
+
+}
+
+.diary-card__btn__minimize, .diary-card__btn__remove {
+  border-radius: 100%;
+  padding: 0;
+  font-size: 10pt;
+  width: 18px;
+  height: 18px;
+}
+
+
+.diary-card__btn__remove {
+  background-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.diary-card__btn__remove:hover{
+  background: var(--color-danger);
+  border: 3px solid var(--color-danger);
+  color: var(--color-text);
+}
+
+
+.diary-card__btn__minimize {
+  color: var(--color-button-bg);
+}
+
+.diary-card__btn__minimize:hover{
+  background: var(--color-button-bg);
+  border: 3px solid var(--color-button-bg);
+  color: var(--color-text);
+}
+
+.clearfix:after { 
+  content: "."; 
+  visibility: hidden; 
+  display: block; 
+  height: 0; 
+  clear: both;
+}
