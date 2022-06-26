@@ -14,13 +14,13 @@ router.route('/:username')
 })
 .post(async (req,res) => {
   try {
-    await pool.query(`
+    const diary = await pool.query(`
       INSERT INTO ${req.params.username}_diaries (diary_date, diary_text, diary_owner)
-      VALUES ('${req.body.date}', '${req.body.text}', (SELECT user_id FROM users WHERE user_name='${req.params.username}'))
-      RETURNING diary_id;
+      VALUES ('${req.body.diary_date}', '${req.body.diary_text}', (SELECT user_id FROM users WHERE user_name='${req.params.username}'))
+      RETURNING *;
     `)
 
-    res.status(201).send('Updated diary list')
+    res.status(201).send(diary)
   }catch (error){
     res.status(500).send(error)
   }
