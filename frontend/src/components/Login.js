@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import { UserContext } from './App'
 
 
-const Login = ({ logIn, authMessage }) => {
-  const { setUserName, setPassWord } = useContext(UserContext)
+const Login = ({ logIn, authMessage, signUp }) => {
+  const { userName, passWord, setUserName, setPassWord } = useContext(UserContext)
 
   const handleUserNameInputChange = (newUserName) => {
       setUserName(newUserName)
@@ -12,7 +12,7 @@ const Login = ({ logIn, authMessage }) => {
   const handlePassWordInputChange = (newPassWord) => {
     setPassWord(newPassWord)
   }
-  
+
   return (
     <div className='login'>
       <div className='login-inputs'>
@@ -27,7 +27,8 @@ const Login = ({ logIn, authMessage }) => {
           name='username' 
           id='username' 
           className='login-inputs__input'
-          required 
+          required
+          value={userName} 
           onChange = {e => handleUserNameInputChange(e.target.value)}
         />
 
@@ -43,6 +44,7 @@ const Login = ({ logIn, authMessage }) => {
           id='password' 
           className='login-inputs__input' 
           required
+          value={passWord}
           onChange = {e => handlePassWordInputChange(e.target.value)}
 
         />
@@ -52,7 +54,7 @@ const Login = ({ logIn, authMessage }) => {
       </div>
       <div className='login-btn'>
         <button className='btn btn--primary' onClick={() => logIn()}>Log In</button>
-        <button className='btn btn--primary'>Sign Up</button>
+        <button className='btn btn--primary' onClick={() => signUp()}>Sign Up</button>
       </div>
     </div>
   )
