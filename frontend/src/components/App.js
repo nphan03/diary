@@ -47,7 +47,6 @@ const App = () => {
   }
 
   const modifyText = (diary_id, diary) => {
-
     axios.put(`http://localhost:3000/${userName}`,{
       diary_id,
       newText: diary.diary_text
@@ -68,7 +67,6 @@ const App = () => {
 
   
   const handleDeleteDiary = (delete_id) => {
-    console.log(delete_id)
     axios.delete(`http://localhost:3000/${userName}`, {data: {id: delete_id}})
     .then(serverResponse => {
       if (serverResponse.data !== 'Updated diary list') throw serverResponse.data
@@ -96,7 +94,7 @@ const App = () => {
 
     axios.post(`http://localhost:3000/${diary.diary_username}`, diary)
     .then(serverResponse => {
-      if(serverResponse.status !== 500) setDiaryList([...diaryList, serverResponse.data.rows[0]])
+      if(serverResponse.status !== 500) setDiaryList([ serverResponse.data.rows[0], ...diaryList ])
       else throw serverResponse.data
     })
     .catch(err => {
