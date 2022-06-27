@@ -66,6 +66,21 @@ const App = () => {
     })
   }
 
+  
+  const handleDeleteDiary = (delete_id) => {
+    console.log(delete_id)
+    axios.delete(`http://localhost:3000/${userName}`, {data: {id: delete_id}})
+    .then(serverResponse => {
+      if (serverResponse.data !== 'Updated diary list') throw serverResponse.data
+      else {
+        setDiaryList(diaryList.filter(d => d.diary_id !== delete_id))
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
   const addDiary = () => {
     const diary = {
       diary_username: userName,
@@ -99,7 +114,8 @@ const App = () => {
   const diaryContextValue = {
     diaryList,
     addDiary,
-    modifyText
+    modifyText, 
+    handleDeleteDiary
   }
   
   return (
