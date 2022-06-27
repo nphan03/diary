@@ -3,7 +3,7 @@
 @import 'taskbar.css';
 @import 'diarycard.css';
 @import 'date.css';
-@import 'modal.css';
+@import 'dangermodal.css';
 
 * {
   margin: 0;

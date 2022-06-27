@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:3030/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Web site created using create-react-app">
+    <title>The Diary</title>
+  <style type="text/css">@import url(https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&display=swap);</style><style type="text/css">* {
+  margin: 0;
+  padding: 0; 
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+:root {
+  --color-bg: #fffcf7;
+  --color-card-bg: #e4f0d0;
+  --color-button-bg: #9ac98f; 
+  --color-text: #38383a;
+  --color-white: #fff;
+  --color-danger: red;
+
+  --transition: all 400ms ease;
+
+  --container-width-lg: 75%;
+  --container-width-md: 86%;
+  --container-width-sm: 90%;
+
+  --padding-size: 1rem;
+  --border-radius: 0.4rem;
+}
+
+body {
+  background: var(--color-bg);
+  font-family: 'Delius Swash Caps', cursive;
+  color: var(--color-text);
+  line-height: 1.7;
+  width: 100vw;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/********** GENERAL STYLE **************/
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+h3 {
+    font-size: 1.5rem;
+}
+
+a {
+    color: var(--color-text);
+    transition: var(--transition);
+}
+
+.btn {
+  width: max-content;
+  display: inline-block;
+  padding: 0.75rem 1.2rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  background-color: var(--color-button-bg);
+  transition: var(--transition);
+  border: 3px solid transparent;
+
+  font-weight: bold;
+  font-family: inherit;
+  font-size: 15pt;
+}
+
+.btn:hover {
+  background: var(--color-white);
+  border: 3px solid var(--color-button-bg);
+}</style><style type="text/css">.login {
+  max-width: 20rem;
+  height: -moz-fit-content;
+  height: fit-content;
+  
+  position: absolute; /*Can also be `fixed`*/
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  display: grid;
+  grid-template-rows: max-content max-content;
+  grid-gap: 1rem;
+  gap: 1rem;
+}
+
+.login-inputs {
+  background: var(--color-card-bg);
+
+  padding: 3rem var(--padding-size);
+  max-width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  grid-gap: 15px;
+  gap: 15px;
+
+  border-radius: var(--border-radius);
+}
+
+.login-inputs__label {
+  display: block;
+  font-size: 18pt;
+}
+
+.login-inputs__input {
+  height: 40px;
+  font-size: 14pt;
+  padding: var(--padding-size);
+}
+
+.login-btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-message {
+  height: 50px;
+  color: var(--color-danger)
+}</style><style type="text/css">.user-link, .add-diary-btn {
+  font-size: 18pt;
+  border-radius:100%;
+  margin-left: 10px;
+}
+
+.add-diary-btn {
+  padding-left: 22.5px;
+  padding-right: 22.5px;
+
+}
+
+.taskbar-btn {
+  position: fixed;
+  bottom:10px;
+  right: 10px;
+
+  display: flex;
+  flex-direction: column;
+  grid-gap: 10px;
+  gap: 10px;
+
+  z-index: 2;
+}
+
+</style><style type="text/css">.diary-card {
+  width: 21%;
+  height: 12rem;
+  margin: 2%;
+  float: left;
+
+  background: var(--color-card-bg);
+  border-radius: var(--border-radius);
+
+  display: grid;
+  grid-template-columns: auto min-content;
+  grid-template-rows: auto min-content;
+
+  grid-template-areas: 
+    "text text"
+    "date buttons";
+
+  padding: 5px;
+  cursor: pointer;
+}
+
+.diary-card__text {
+  grid-area: text;
+  padding-top: 5px;
+}
+
+.diary-card__text textarea {
+  resize: none;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.diary-card__date {
+  grid-area: date;
+  align-self: end;
+}
+
+.diary-card__btn {
+  grid-area: buttons;
+  flex-direction: column;
+  grid-gap: 5px;
+  gap: 5px;
+
+}
+
+.diary-card__btn__minimize, .diary-card__btn__remove {
+  border-radius: 100%;
+  padding: 0;
+  font-size: 10pt;
+  width: 18px;
+  height: 18px;
+}
+
+
+.diary-card__btn__remove {
+  background-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.diary-card__btn__remove:hover{
+  background: var(--color-danger);
+  border: 3px solid var(--color-danger);
+  color: var(--color-text);
+}
+
+
+.diary-card__btn__minimize {
+  color: var(--color-button-bg);
+}
+
+.diary-card__btn__minimize:hover{
+  background: var(--color-button-bg);
+  border: 3px solid var(--color-button-bg);
+  color: var(--color-text);
+}
+
+
+/* ========================== MEDIA QUERIES (MEDIUM DEVICES) ==================*/
+@media screen and (max-width: 992px) {
+  .diary-card {
+    width: 46%;
+  }
+}
+
+/* ========================== MEDIA QUERIES (SMALL DEVICES) ==================*/
+@media screen and (max-width: 576px) {
+  .diary-card {
+    width: 96%;
+  }
+}
+
+.clearfix:after { 
+  content: "."; 
+  visibility: hidden; 
+  display: block; 
+  height: 0; 
+  clear: both;
+}</style><style type="text/css">.date-navigation {
+  display: flex;
+  grid-gap: 20px;
+  gap: 20px;
+  justify-content: center;
+
+  background: var(--color-bg);
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  padding: 10px;
+  font-weight: bold;
+}
+
+
+.date-navigation__month, .date-navigation__year {
+  cursor: n-resize;
+}
+
+.date-navigation__month:hover, .date-navigation__year:hover {
+  transform: scale(1.2);
+  transition: var(--transition)
+}</style><style type="text/css">.dangerModal_background {
+  background-color: white;
+  opacity: 1.5;
+
+  position: absolute; /*Can also be `fixed`*/
+  margin: auto;
+  left: 0;
+  top: 0;
+
+  width: 100vw;
+  height: 100vh;
+}
+.dangerModal {
+  max-width: 35rem;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 35px;
+  
+  position: absolute; /*Can also be `fixed`*/
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  background: var(--color-white);
+  border: 2px solid var(--color-button-bg);
+  border-radius: var(--border-radius);
+
+  font-size: 20px;
+}
+
+.dangerModal_button_yes {
+  background: var(--color-danger);
+  color: var(--color-white);
+  border-color: var(--color-danger) 
+}
+
+.dangerModal_button_yes:hover {
+  color: red;
+  border-color: var(--color-danger) 
+}
+.dangerModal_button {
+  text-align: center;
+}
+
+.dangerModal_button .btn {
+  margin: 25px;
+}
+
+/* ========================== MEDIA QUERIES (MEDIUM DEVICES) ==================*/
+@media screen and (max-width: 992px) {
+  .dangerModal {
+    padding: 25px;  
+  }
+
+  .dangerModal_button .btn {
+    margin: 15px;
+  }
+}
+
+/* ========================== MEDIA QUERIES (SMALL DEVICES) ==================*/
+@media screen and (max-width: 576px) {
+  .dangerModal {
+    padding: 15px;  
+  }
+
+  .dangerModal_button .btn {
+    margin: 10px;
+  }
+}</style><script charset="utf-8" src="./The Diary_files/main.b3c7710f07371da778c1.hot-update.js"></script><script charset="utf-8" src="./The Diary_files/main.3acc13b9630e736cb215.hot-update.js"></script><script charset="utf-8" src="./The Diary_files/main.04d38a1c28545d2cee20.hot-update.js"></script><script charset="utf-8" src="./The Diary_files/main.322bed9a3ac6b99ac125.hot-update.js"></script><script charset="utf-8" src="./The Diary_files/main.5cdd693e2d3f3cca998d.hot-update.js"></script><script charset="utf-8" src="./The Diary_files/main.370e839fa57b7f95b13c.hot-update.js"></script><script charset="utf-8" src="./The Diary_files/main.403d913c9615eb75ce53.hot-update.js"></script><script charset="utf-8" src="./The Diary_files/main.e916e413586224b7ae5a.hot-update.js"></script><script charset="utf-8" src="./The Diary_files/main.d8e48c993b7226ce689b.hot-update.js"></script><script charset="utf-8" src="./The Diary_files/main.a0b354aeb697084038c1.hot-update.js"></script><script charset="utf-8" src="./The Diary_files/main.b07bcf1ba4fae9769d10.hot-update.js"></script><script charset="utf-8" src="./The Diary_files/main.9e70f9028da63c9ffccf.hot-update.js"></script><script charset="utf-8" src="./The Diary_files/main.0a74523e3faa5a6ac04a.hot-update.js"></script><script charset="utf-8" src="./The Diary_files/main.8baac168cc41542dc2aa.hot-update.js"></script><script charset="utf-8" src="./The Diary_files/main.0358098835475aa9f8e9.hot-update.js"></script><script charset="utf-8" src="./The Diary_files/main.4142b9c5476e685afc50.hot-update.js"></script><script charset="utf-8" src="./The Diary_files/main.69f1d3262d392488a4e8.hot-update.js"></script></head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"><div class="diary-list clearfix"><div class="diary-card"><div class="diary-card__text"><textarea></textarea></div><div class="diary-card__date">Sun, Jun 26 2022</div><div class="diary-card__btn"><button class="btn diary-card__btn__remove">✕</button><button class="btn diary-card__btn__minimize">−</button></div><div class="dangerModal_background"></div><div class="dangerModal"><div>This action can't be reversed. Are you sure you want to delete your diary on Sun, Jun 26 2022?</div><div class="dangerModal_button"><button class="btn dangerModal_button_no">NO</button><button class="btn dangerModal_button_yes">YES</button></div></div></div><div class="diary-card"><div class="diary-card__text"><textarea>Updated diary</textarea></div><div class="diary-card__date">Thu, Jun 23 2022</div><div class="diary-card__btn"><button class="btn diary-card__btn__remove">✕</button><button class="btn diary-card__btn__minimize">−</button></div></div></div><div class="taskbar-btn"><button class="add-diary-btn btn btn-primary">+</button><button class="user-link btn btn-primary">A</button></div><div class="date-navigation"><div class="date-navigation__month">June</div><div class="date-navigation__divider">|</div><div class="date-navigation__year">2022</div></div></div>
+  <script src="./The Diary_files/bundle.js"></script><script src="./The Diary_files/1.chunk.js"></script><script src="./The Diary_files/main.chunk.js"></script><script src="./The Diary_files/main.99cefaf852d9cac7f64b.hot-update.js"></script>
+
+</body></html>

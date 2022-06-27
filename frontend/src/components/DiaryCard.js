@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Modal from './Modal'
+import DangerModal from './DangerModal'
 
 const DiaryCard = ({ diary, modifyText }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -29,7 +29,7 @@ const DiaryCard = ({ diary, modifyText }) => {
         <button className='btn diary-card__btn__minimize'>&#8722;</button>
       </div>
 
-      <Modal 
+      <DangerModal 
         open={isOpen} 
         setIsOpen={setIsOpen} 
         date={formateddate}

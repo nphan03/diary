@@ -1,3 +1,16 @@
+.dangerModal_background {
+  background-color: white;
+  opacity: 0.8;
+
+  position: absolute; /*Can also be `fixed`*/
+  margin: auto;
+  left: 0;
+  top: 0;
+
+  width: 100vw;
+  height: 100vh;
+}
+
 .dangerModal {
   max-width: 35rem;
   height: fit-content;
@@ -15,7 +28,6 @@
   border-radius: var(--border-radius);
 
   font-size: 20px;
-
 }
 
 .dangerModal_button_yes {
