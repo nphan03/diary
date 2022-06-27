@@ -5,7 +5,7 @@ const pool = require('../database/db')
 router.route('/:username')
 .get(async (req,res) => {
   try {
-    const allDiary = await pool.query(`SELECT * FROM ${req.params.username}_diaries;`)
+    const allDiary = await pool.query(`SELECT * FROM ${req.params.username}_diaries ORDER BY diary_id DESC;`)
     
     res.status(201).json(allDiary.rows)
   } catch (error) {
@@ -27,11 +27,10 @@ router.route('/:username')
 })
 .put(async (req,res) => {
   try{
-    const modifiedDiaryDate = await pool.query(`
-      UPDATE  ${req.params.username}_diaries SET diary_text='${req.body.newText}' WHERE diary_id='${req.body.id}'
-      RETURNING diary_date;
+    await pool.query(`
+      UPDATE  ${req.params.username}_diaries SET diary_text='${req.body.newText}' WHERE diary_id='${req.body.diary_id}';
     `)
-    res.status(201).send(`Updated ${modifiedDiaryDate.rows[0].diary_date} diary`)
+    res.status(201).send(`Updated diary`)
   }catch(error){
     res.status(500).send(error)
   }

@@ -46,6 +46,26 @@ const App = () => {
     })
   }
 
+  const modifyText = (diary_id, diary) => {
+
+    axios.put(`http://localhost:3000/${userName}`,{
+      diary_id,
+      newText: diary.diary_text
+    })
+    .then(serverResponse => {
+      if (serverResponse.data !== 'Updated diary') throw serverResponse.data
+      else {
+        const newDiaryList = [...diaryList]
+        const index = newDiaryList.findIndex(d => d.diary_id === diary_id)
+        newDiaryList[index] = diary
+        setDiaryList(newDiaryList)
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
   const addDiary = () => {
     const diary = {
       diary_username: userName,
@@ -78,7 +98,8 @@ const App = () => {
 
   const diaryContextValue = {
     diaryList,
-    addDiary
+    addDiary,
+    modifyText
   }
   
   return (
