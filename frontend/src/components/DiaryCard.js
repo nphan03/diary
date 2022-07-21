@@ -3,6 +3,7 @@ import DangerModal from './DangerModal'
 
 const DiaryCard = ({ diary, modifyText }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const [ isClick, setIsClick  ] = useState(false)
 
 
   const date = new Date(`${diary.diary_date}`).toDateString()
@@ -14,17 +15,19 @@ const DiaryCard = ({ diary, modifyText }) => {
   }
 
   return (
-    <>
+    <div className={isClick ? 'isClicked diary-card' : 'diary-card'}>
       <div className='diary-card__text'>
-        <textarea 
+        <textarea
+          placeholder='What are you thinking?' 
           value={diary.diary_text}
           onChange={(e) => handleTextChange(e.target.value)}
         ></textarea>
       </div>
+
+      <div 
+        className='diary-card__date'  onClick={() => setIsClick(true)}>{formateddate}</div>
       
-      <div className='diary-card__date'>{formateddate}</div>
-      
-      <div className='diary-card__btn'>
+      <div className='diary-card__btn'  onClick={() => setIsClick(true)}>
         <button className='btn diary-card__btn__remove' onClick={() => setIsOpen(true)}>&#x2715;</button>
         <button className='btn diary-card__btn__minimize'>&#8722;</button>
       </div>
@@ -35,7 +38,7 @@ const DiaryCard = ({ diary, modifyText }) => {
         date={formateddate}
         id={diary.diary_id}
       />
-    </>
+    </div>
   )
 }
 

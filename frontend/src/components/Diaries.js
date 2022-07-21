@@ -5,19 +5,19 @@ import DiaryCard from './DiaryCard'
 const Diaries = () => {
   const { diaryList, modifyText } = useContext(DiaryContext)
 
+
   return (
     <div className='diary-list clearfix'>
       {diaryList.map((diary) => (
-        <div 
-          key={diary.diary_id} 
-          className="diary-card"
-        >
           <DiaryCard 
+            key={diary.diary_id} 
             diary={diary} 
             modifyText={modifyText}
+
           />
-        </div>
       ))}
+
+      
     </div>   
   )
 }

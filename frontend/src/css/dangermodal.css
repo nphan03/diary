@@ -9,6 +9,8 @@
 
   width: 100vw;
   height: 100vh;
+
+  cursor: default;
 }
 
 .dangerModal {
@@ -28,6 +30,7 @@
   border-radius: var(--border-radius);
 
   font-size: 20px;
+  cursor: default;
 }
 
 .dangerModal_button_yes {
@@ -40,12 +43,15 @@
   color: red;
   border-color: var(--color-danger) 
 }
+
 .dangerModal_button {
   text-align: center;
+  
 }
 
 .dangerModal_button .btn {
   margin: 25px;
+  cursor: pointer;
 }
 
 /* ========================== MEDIA QUERIES (MEDIUM DEVICES) ==================*/
